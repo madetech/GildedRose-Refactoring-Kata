@@ -31,7 +31,7 @@ export class GildedRose {
                 this.increaseQualityIfQualityUnderCap(this.items[i]);
 
                 if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    this.increaseQualityGivenSellIn(this.items[i])
+                    this.increaseBackstagePassQualityGivenSellIn(this.items[i])
                 }
 
             }
@@ -64,7 +64,7 @@ export class GildedRose {
         }
     }
 
-    increaseQualityGivenSellIn(item){
+    increaseBackstagePassQualityGivenSellIn(item){
         const increase = item.sellIn < 6 ? 2:1;
         if (item.sellIn < 11) {
             this.increaseQualityIfQualityUnderCap(item, increase);
