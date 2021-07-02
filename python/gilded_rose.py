@@ -2,6 +2,9 @@
 
 class GildedRose(object):
 
+    QUALITY_THRESHOLD = 50
+    QUALITY_FLOOR = 0
+
     def __init__(self, items):
         self.items = items
 
@@ -30,13 +33,13 @@ class GildedRose(object):
             return
 
         self.upgrade(item)
-        if item.quality <= 50:
+        if item.quality <= self.QUALITY_THRESHOLD:
             if item.sell_in < 10:
                 self.upgrade(item)
             if item.sell_in < 5:
                 self.upgrade(item)
         if item.sell_in < 0:
-            item.quality = 0
+            item.quality = self.QUALITY_FLOOR
 
     def others(self, item):
         if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert":
@@ -47,11 +50,11 @@ class GildedRose(object):
             self.degrade(item)
 
     def upgrade(self, item):
-        if item.quality < 50:
+        if item.quality < self.QUALITY_THRESHOLD:
             item.quality = item.quality + 1
 
     def degrade(self, item):
-        if item.quality > 0:
+        if item.quality > self.QUALITY_FLOOR:
             item.quality = item.quality - 1
 
 
