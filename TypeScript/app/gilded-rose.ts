@@ -1,4 +1,5 @@
 const MAX_QUALITY = 50;
+const MIN_QUALITY = 0;
 
 export class Item {
     name: string;
@@ -57,7 +58,7 @@ export class GildedRose {
     }
 
     reduceQualityIfQualityAboveMinimum(item) {
-        if (item.quality > 0) {
+        if (item.quality > MIN_QUALITY) {
             item.quality = item.quality -1;
         }
     }
