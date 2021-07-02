@@ -31,11 +31,41 @@ class GildedRoseTest(unittest.TestCase):
             GildedRose(self.items).update_quality()
         verify(self.items)
 
-        # def test_foo(self):
-        #     items = [Item("foo", 0, 0)]
-        #     gilded_rose = GildedRose(items)
-        #     gilded_rose.update_quality()
-        #     self.assertEquals("foo", items[0].name)
+    def test_concert_passes(self):
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", 10, 48)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEquals(
+            "Backstage passes to a TAFKAL80ETC concert", items[0].name)
+        self.assertEquals(50, items[0].quality)
+        self.assertEquals(9, items[0].sell_in)
+
+    def test_concert_passes_in_five_days(self):
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", 5, 47)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEquals(
+            "Backstage passes to a TAFKAL80ETC concert", items[0].name)
+        self.assertEquals(50, items[0].quality)
+        self.assertEquals(4, items[0].sell_in)
+
+    def test_concert_passes_in_six_days(self):
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", 6, 47)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEquals(
+            "Backstage passes to a TAFKAL80ETC concert", items[0].name)
+        self.assertEquals(49, items[0].quality)
+        self.assertEquals(5, items[0].sell_in)
+
+    def test_concert_passes_in_eleven_days(self):
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", 11, 47)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        self.assertEquals(
+            "Backstage passes to a TAFKAL80ETC concert", items[0].name)
+        self.assertEquals(48, items[0].quality)
+        self.assertEquals(10, items[0].sell_in)
 
 
 if __name__ == '__main__':
