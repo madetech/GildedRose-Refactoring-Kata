@@ -15,6 +15,8 @@ class GildedRose(object):
 
             if item.name == "Aged Brie":
                 self.upgrade(item)
+                if item.sell_in < 0:
+                    self.upgrade(item)
 
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 self.degrade(item)
@@ -35,8 +37,6 @@ class GildedRose(object):
             if item.sell_in < 0:
                 if item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
-                if item.name == "Aged Brie":
-                    self.upgrade(item)
 
     def upgrade(self, item):
         if item.quality < 50:
