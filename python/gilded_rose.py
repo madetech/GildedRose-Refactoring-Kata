@@ -16,6 +16,10 @@ class GildedRose(object):
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
                     item.quality = item.quality - 1
+                            
+                if item.sell_in < 0:
+                    if item.quality > 0:
+                        item.quality = item.quality - 1
 
             # Item is Aged Brie or backstage passes
             if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert":
@@ -30,9 +34,6 @@ class GildedRose(object):
                                 item.quality = item.quality + 1
 
             if item.sell_in < 0:
-                if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-                    if item.quality > 0:
-                        item.quality = item.quality - 1
                 if item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
                 if item.name == "Aged Brie":
