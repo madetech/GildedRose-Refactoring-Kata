@@ -1,3 +1,5 @@
+const MAX_QUALITY = 50;
+
 export class Item {
     name: string;
     sellIn: number;
@@ -9,8 +11,6 @@ export class Item {
         this.quality = quality;
     }
 }
-
-const MAX_QUALITY = 50;
 
 export class GildedRose {
     items: Array<Item>;
@@ -49,7 +49,7 @@ export class GildedRose {
                             this.items[i].quality = this.items[i].quality - 1
                         }
                     } else {
-                        this.items[i].quality = this.items[i].quality - this.items[i].quality
+                        this.items[i].quality = 0;
                     }
                 } else {
                     this.increaseQualityIfQualityUnderCap(this.items[i]);
