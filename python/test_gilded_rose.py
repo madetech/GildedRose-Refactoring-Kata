@@ -2,6 +2,7 @@
 import unittest
 
 from approvaltests.approvals import verify
+from approvaltests.reporters.diff_reporter import DiffReporter
 from gilded_rose import Item, GildedRose
 
 
@@ -26,10 +27,16 @@ class GildedRoseTest(unittest.TestCase):
         verify(self.items)
 
     def test_verify_update_quality_multiple_days(self):
-        days = 15
+        days = 30
+        days_and_items = {}
+
         for day in range(days):
+            days_and_items[day] = self.items.copy()
             GildedRose(self.items).update_quality()
-        verify(self.items)
+
+        days_and_items[days + 1] = self.items.copy()
+
+        verify(days_and_items)
 
     def test_concert_passes(self):
         items = [Item("Backstage passes to a TAFKAL80ETC concert", 10, 48)]
