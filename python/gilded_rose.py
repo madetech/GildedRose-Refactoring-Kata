@@ -13,29 +13,38 @@ class GildedRose(object):
 
             item.sell_in = item.sell_in - 1
 
-            if item.name == "Aged Brie":
-                self.aged_brie(item)
-
-            if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                self.upgrade(item)
-                if item.quality <= 50:
-                    if item.sell_in < 10:
-                        self.upgrade(item)
-                    if item.sell_in < 5:
-                        self.upgrade(item)
-                if item.sell_in < 0:
-                    item.quality = 0
-
-            if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
-                self.degrade(item)
-
-                if item.sell_in < 0:
-                    self.degrade(item)
+            self.aged_brie(item)
+            self.backstage_passes(item)
+            self.others(item)
 
     def aged_brie(self, item):
+        if item.name != "Aged Brie":
+            return
+
         self.upgrade(item)
         if item.sell_in < 0:
             self.upgrade(item)
+
+    def backstage_passes(self, item):
+        if item.name != "Backstage passes to a TAFKAL80ETC concert":
+            return
+
+        self.upgrade(item)
+        if item.quality <= 50:
+            if item.sell_in < 10:
+                self.upgrade(item)
+            if item.sell_in < 5:
+                self.upgrade(item)
+        if item.sell_in < 0:
+            item.quality = 0
+
+    def others(self, item):
+        if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert":
+            return
+
+        self.degrade(item)
+        if item.sell_in < 0:
+            self.degrade(item)
 
     def upgrade(self, item):
         if item.quality < 50:
