@@ -28,16 +28,16 @@ export class GildedRose {
                 }
             } else {
                 this.increaseQuality(this.items[i]);
-                if (this.qualityLessThanFifty(this.items[i])) {
-                    if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (this.items[i].sellIn < 11) {
-                            this.increaseQuality(this.items[i]);
-                        }
-                        if (this.items[i].sellIn < 6) {
-                            this.increaseQuality(this.items[i]);
-                        }
+
+                if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
+                    if (this.items[i].sellIn < 11) {
+                        this.increaseQuality(this.items[i]);
+                    }
+                    if (this.items[i].sellIn < 6) {
+                        this.increaseQuality(this.items[i]);
                     }
                 }
+                
             }
             this.items[i].sellIn = this.items[i].sellIn - 1;
             if (this.items[i].sellIn < 0) {
