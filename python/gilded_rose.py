@@ -28,14 +28,13 @@ class GildedRose(object):
             if item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self.upgrade(item)
 
-                if item.quality <= 50 and item.name == "Backstage passes to a TAFKAL80ETC concert":
+                if item.quality <= 50:
                     if item.sell_in < 10:
                         self.upgrade(item)
                     if item.sell_in < 5:
                         self.upgrade(item)
 
-            if item.sell_in < 0:
-                if item.name == "Backstage passes to a TAFKAL80ETC concert":
+                if item.sell_in < 0:
                     item.quality = 0
 
     def upgrade(self, item):
