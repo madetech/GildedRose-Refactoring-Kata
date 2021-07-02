@@ -13,9 +13,9 @@ class GildedRose(object):
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
                     item.quality = item.quality - 1
-            else:
-                if item.quality < 50:
-                    item.quality = item.quality + 1
+            else:   # Item is Aged Brie or backstage passes
+                if item.quality < 50:  # => 49
+                    item.quality = item.quality + 1  # => 50
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 11:
                             if item.quality < 50:
@@ -30,13 +30,10 @@ class GildedRose(object):
                         if item.quality > 0:
                             item.quality = item.quality - 1
                     else:
-                        item.quality = item.quality - item.quality
+                        item.quality = 0
                 else:
                     if item.quality < 50:
                         item.quality = item.quality + 1
-
-    # def updateSulfuras(self, item) :
-    #     item.sell_
 
 
 class Item:
