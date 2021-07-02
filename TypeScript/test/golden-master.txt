@@ -8,7 +8,7 @@ Sulfuras, Hand of Ragnaros -1 80
 Backstage passes to a TAFKAL80ETC concert 15 20
 Backstage passes to a TAFKAL80ETC concert 10 49
 Backstage passes to a TAFKAL80ETC concert 5 49
-Conjured Mana Cake 3 6 X
+Conjured Mana Cake 3 6
 
 -------- day 1 --------
 name, sellIn, quality

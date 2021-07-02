@@ -7,7 +7,7 @@
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
     "test": "nyc mocha",
-    "golden-test": "npm run compile && node test/golden-master-text-test.js >> test/golden-run.txt && diff test/golden-master.txt test/golden-run.txt"
+    "golden-test": "npm run compile && node test/golden-master-text-test.js > test/golden-run.txt && diff test/golden-master.txt test/golden-run.txt"
   },
   "license": "MIT",
   "private": true,
