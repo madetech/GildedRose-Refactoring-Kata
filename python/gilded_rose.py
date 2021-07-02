@@ -25,18 +25,19 @@ class GildedRose(object):
                     item.quality = item.quality + 1  # => 50
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 10:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
+                            self.upgrade(item)
                         if item.sell_in < 5:
-                            if item.quality < 50:
-                                item.quality = item.quality + 1
+                            self.upgrade(item)
 
             if item.sell_in < 0:
                 if item.name == "Backstage passes to a TAFKAL80ETC concert":
                     item.quality = 0
                 if item.name == "Aged Brie":
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
+                    self.upgrade(item)
+
+    def upgrade(self, item):
+        if item.quality < 50:
+            item.quality = item.quality + 1
 
     def degrade(self, item):
         if item.quality > 0:
