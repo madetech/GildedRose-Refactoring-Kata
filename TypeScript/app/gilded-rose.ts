@@ -10,6 +10,8 @@ export class Item {
     }
 }
 
+const MAX_QUALITY = 50;
+
 export class GildedRose {
     items: Array<Item>;
 
@@ -27,14 +29,14 @@ export class GildedRose {
                     this.items[i].quality = this.items[i].quality - 1
                 }
             } else {
-                this.increaseQuality(this.items[i]);
+                this.increaseQualityIfQualityUnderCap(this.items[i]);
 
                 if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
                     if (this.items[i].sellIn < 11) {
-                        this.increaseQuality(this.items[i]);
+                        this.increaseQualityIfQualityUnderCap(this.items[i]);
                     }
                     if (this.items[i].sellIn < 6) {
-                        this.increaseQuality(this.items[i]);
+                        this.increaseQualityIfQualityUnderCap(this.items[i]);
                     }
                 }
 
@@ -50,7 +52,7 @@ export class GildedRose {
                         this.items[i].quality = this.items[i].quality - this.items[i].quality
                     }
                 } else {
-                    this.increaseQuality(this.items[i]);
+                    this.increaseQualityIfQualityUnderCap(this.items[i]);
                 }
             }
         }
@@ -58,8 +60,9 @@ export class GildedRose {
         return this.items;
     }
 
-    increaseQuality(item) {
-        if (item.quality < 50) {
+
+    increaseQualityIfQualityUnderCap(item) {
+        if (item.quality < MAX_QUALITY) {
             item.quality = item.quality + 1;
         }
     }
