@@ -31,8 +31,7 @@ export class GildedRose {
                 this.increaseQualityIfQualityUnderCap(this.items[i]);
 
                 if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    this.increaseQualityGivenSellIn(11, this.items[i])
-                    this.increaseQualityGivenSellIn(6, this.items[i])
+                    this.increaseQualityGivenSellIn(this.items[i])
                 }
 
             }
@@ -59,15 +58,16 @@ export class GildedRose {
         }
     }
 
-    increaseQualityIfQualityUnderCap(item) {
+    increaseQualityIfQualityUnderCap(item, increase = 1) {
         if (item.quality < MAX_QUALITY) {
-            item.quality = item.quality + 1;
+            item.quality = item.quality + increase;
         }
     }
 
-    increaseQualityGivenSellIn(sellIn, item){
-        if (item.sellIn < sellIn) {
-            this.increaseQualityIfQualityUnderCap(item);
+    increaseQualityGivenSellIn(item){
+        const increase = item.sellIn < 6 ? 2:1;
+        if (item.sellIn < 11) {
+            this.increaseQualityIfQualityUnderCap(item, increase);
         }
     }
 
