@@ -21,13 +21,13 @@ class GildedRose(object):
 
             # Item is Aged Brie or backstage passes
             if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert":
-                if item.quality < 50:  # => 49
-                    self.upgrade(item)
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        if item.sell_in < 10:
-                            self.upgrade(item)
-                        if item.sell_in < 5:
-                            self.upgrade(item)
+                self.upgrade(item)
+                
+                if item.quality <= 50 and item.name == "Backstage passes to a TAFKAL80ETC concert":
+                    if item.sell_in < 10:
+                        self.upgrade(item)
+                    if item.sell_in < 5:
+                        self.upgrade(item)
 
             if item.sell_in < 0:
                 if item.name == "Backstage passes to a TAFKAL80ETC concert":
